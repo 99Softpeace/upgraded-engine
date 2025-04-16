@@ -1,5 +1,7 @@
+// src/app/layout.tsx
+
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Dancing_Script } from "next/font/google";
 import "./globals.css";
 
 // Import Geist Sans and Geist Mono fonts
@@ -14,11 +16,11 @@ const geistMono = Geist_Mono({
 });
 
 // Import Dancing Script font for the handwritten effect
-const dancingScript = {
+const dancingScript = Dancing_Script({
   variable: "--font-dancing-script",
   subsets: ["latin"],
   weight: "700", // Use bold weight for better visibility
-};
+});
 
 export const metadata: Metadata = {
   title: "My Portfolio",
@@ -32,20 +34,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        {/* Add the Dancing Script font */}
-        <link
-          href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap"
-          rel="stylesheet"
-        />
-      </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${dancingScript.variable} antialiased`}
       >
         {children}
       </body>
     </html>
   );
 }
-
-
